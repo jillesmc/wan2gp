@@ -11,6 +11,15 @@ module.exports = {
       message: "git pull"
     }
   }, {
+    method: "shell.run",
+    params: {
+      path: "app",
+      message: [
+        "{{platform === 'linux' ? 'if [ -x env/bin/python ]; then env/bin/python -c \"import sys; raise SystemExit(0 if sys.version_info[:2] == (3, 11) else 1)\" || (echo \"Existing env is not Python 3.11. Run Reset or delete app/env and reinstall.\" && exit 1); else uv venv --python 3.11 env; fi' : 'echo Python 3.11 env check skipped on non-linux'}}",
+        "env/bin/python -c \"import sys; print('env python:', sys.version)\""
+      ]
+    }
+  }, {
     method: "script.start",
     params: {
       uri: "torch.js",

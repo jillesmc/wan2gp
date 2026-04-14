@@ -22,6 +22,16 @@ module.exports = {
     {
       method: "shell.run",
       params: {
+        path: "app",
+        message: [
+          "{{platform === 'linux' ? 'if [ -x env/bin/python ]; then env/bin/python -c \"import sys; raise SystemExit(0 if sys.version_info[:2] == (3, 11) else 1)\" || (echo \"Existing env is not Python 3.11. Run Reset or delete app/env to continue.\" && exit 1); else uv venv --python 3.11 env; fi' : 'uv venv env'}}",
+          "env/bin/python -c \"import sys; print('env python:', sys.version)\""
+        ]
+      }
+    },
+    {
+      method: "shell.run",
+      params: {
         venv: "env",
         path: "app",
         env: {

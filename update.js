@@ -35,6 +35,8 @@ module.exports = {
       },
       message: [
         "uv pip install -r requirements.txt --index-strategy unsafe-best-match",
+        "{{platform === 'linux' ? 'python -c \"import sys; assert sys.version_info[:2] == (3, 11), f\\\"Python 3.11 is required for GGUF torch2.10/cu130. Current: {sys.version}\\\"\"' : 'echo Python 3.11 check skipped on non-linux'}}",
+        "{{platform === 'linux' ? 'uv pip install https://github.com/deepbeepmeep/kernels/releases/download/GGUF_Kernels/llamacpp_gguf_cuda-1.0.2+torch210cu13py311-cp311-cp311-linux_x86_64.whl' : 'echo GGUF install skipped on non-linux'}}",
         "python -c \"import torch; print(torch.__version__, torch.version.cuda, torch.cuda.is_available())\"",
         "{{platform === 'linux' ? 'python -c \"import llamacpp_gguf_cuda; print(\\'gguf kernel ok\\')\"' : 'echo GGUF validation skipped on non-linux'}}"
       ]

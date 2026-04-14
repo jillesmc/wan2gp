@@ -68,6 +68,13 @@ module.exports = {
           text: "Start",
           href: "start.js",
         }, {
+          icon: "fa-solid fa-shield-halved",
+          text: "Start (Safe VRAM)",
+          href: "start.js",
+          params: {
+            safe: true
+          }
+        }, {
           icon: "fa-solid fa-robot",
           text: "Deepy Agent",
           href: "deepy.js",
@@ -95,11 +102,86 @@ module.exports = {
         }, {
           icon: "fa-solid fa-plug",
           text: "Update",
-          href: "update.js",
+          menu: [{
+            icon: "fa-solid fa-plug",
+            text: "Default (Py311 + GGUF)",
+            href: "update.js",
+          }, {
+            icon: "fa-solid fa-gauge-high",
+            text: "Default + Triton",
+            href: "update.js",
+            params: {
+              triton: true
+            }
+          }, {
+            icon: "fa-solid fa-microchip",
+            text: "Default + Nunchaku",
+            href: "update.js",
+            params: {
+              nunchaku: true
+            }
+          }, {
+            icon: "fa-solid fa-bolt",
+            text: "Default + Lightx2v",
+            href: "update.js",
+            params: {
+              lightx2v: true
+            }
+          }, {
+            icon: "fa-solid fa-sliders",
+            text: "All Optional Kernels",
+            href: "update.js",
+            params: {
+              triton: true,
+              nunchaku: true,
+              lightx2v: true
+            }
+          }, {
+            icon: "fa-solid fa-shield-halved",
+            text: "Update + Start Safe (SDPA)",
+            href: "update.js",
+            params: {
+              safeRuntime: true
+            }
+          }],
         }, {
           icon: "fa-solid fa-plug",
           text: "Install",
-          href: "install.js",
+          menu: [{
+            icon: "fa-solid fa-plug",
+            text: "Default (Py311 + GGUF)",
+            href: "install.js",
+          }, {
+            icon: "fa-solid fa-gauge-high",
+            text: "Default + Triton",
+            href: "install.js",
+            params: {
+              triton: true
+            }
+          }, {
+            icon: "fa-solid fa-microchip",
+            text: "Default + Nunchaku",
+            href: "install.js",
+            params: {
+              nunchaku: true
+            }
+          }, {
+            icon: "fa-solid fa-bolt",
+            text: "Default + Lightx2v",
+            href: "install.js",
+            params: {
+              lightx2v: true
+            }
+          }, {
+            icon: "fa-solid fa-sliders",
+            text: "All Optional Kernels",
+            href: "install.js",
+            params: {
+              triton: true,
+              nunchaku: true,
+              lightx2v: true
+            }
+          }],
         }, {
           icon: "fa-regular fa-circle-xmark",
           text: "<div><strong>Reset</strong><div>Revert to pre-install state</div></div>",
@@ -112,7 +194,41 @@ module.exports = {
         default: true,
         icon: "fa-solid fa-plug",
         text: "Install",
-        href: "install.js",
+        menu: [{
+          icon: "fa-solid fa-plug",
+          text: "Default (Py311 + GGUF)",
+          href: "install.js",
+        }, {
+          icon: "fa-solid fa-gauge-high",
+          text: "Default + Triton",
+          href: "install.js",
+          params: {
+            triton: true
+          }
+        }, {
+          icon: "fa-solid fa-microchip",
+          text: "Default + Nunchaku",
+          href: "install.js",
+          params: {
+            nunchaku: true
+          }
+        }, {
+          icon: "fa-solid fa-bolt",
+          text: "Default + Lightx2v",
+          href: "install.js",
+          params: {
+            lightx2v: true
+          }
+        }, {
+          icon: "fa-solid fa-sliders",
+          text: "All Optional Kernels",
+          href: "install.js",
+          params: {
+            triton: true,
+            nunchaku: true,
+            lightx2v: true
+          }
+        }],
       }]
     }
   }

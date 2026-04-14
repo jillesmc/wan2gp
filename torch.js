@@ -23,10 +23,11 @@ module.exports = {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
         "message": [
-          "uv pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 {{args && args.xformers ? 'xformers==0.0.30' : ''}} --index-url https://download.pytorch.org/whl/cu128 --force-reinstall",
-          "uv pip install https://huggingface.co/MonsterMMORPG/SECourses_Premium_Flash_Attention/resolve/main/sageattention-2.1.1-cp310-cp310-linux_x86_64.whl",
-          "uv pip install https://github.com/mjun0812/flash-attention-prebuild-wheels/releases/download/v0.7.16/flash_attn-2.7.4+cu128torch2.7-cp310-cp310-linux_x86_64.whl",
-          "uv pip install numpy==2.1.2"
+          "uv pip install torch==2.10.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu130 --force-reinstall",
+          "{{args && args.triton ? 'uv pip install triton' : 'echo Skipping triton'}}",
+          "{{args && args.gguf ? 'uv pip install https://github.com/deepbeepmeep/kernels/releases/download/GGUF_Kernels/llamacpp_gguf_cuda-1.0.2+torch210cu13py311-cp311-cp311-linux_x86_64.whl' : 'echo Skipping GGUF kernel'}}",
+          "{{args && args.nunchaku ? 'uv pip install https://github.com/nunchaku-ai/nunchaku/releases/download/v1.2.1/nunchaku-1.2.1+cu13.0torch2.10-cp311-cp311-linux_x86_64.whl' : 'echo Skipping nunchaku'}}",
+          "{{args && args.lightx2v ? 'uv pip install https://github.com/deepbeepmeep/kernels/releases/download/Light2xv/lightx2v_kernel-0.0.2+torch2.10.0-cp311-abi3-linux_x86_64.whl' : 'echo Skipping lightx2v'}}"
         ]
       }
     }
